@@ -180,3 +180,16 @@ class LinkedList:
 
         self.head = new_head
         return self.head
+
+    def remove_duplicates(self):
+        curr_node = self.head
+        prev_node = None
+        duplicates = dict()
+        while curr_node:
+            if curr_node.data in duplicates:
+                prev_node.next = curr_node.next
+                curr_node = None
+            else:
+                duplicates[curr_node.data] = 1
+                prev_node = curr_node
+            curr_node = prev_node.next
