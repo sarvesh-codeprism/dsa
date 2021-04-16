@@ -273,7 +273,7 @@ class LinkedList:
         s = ''
         p = self.head
         while p:
-            s += p.data
+            s += str(p.data)
             p = p.next
         return s == s[::-1]
 
@@ -325,3 +325,33 @@ class LinkedList:
             last.next = self.head
             second_to_last.next = None
             self.head = last
+
+    def sum_two_lists(self, llist):
+        p = self.head
+        q = llist.head
+
+        sum_llist = LinkedList()
+
+        carry = 0
+        while p or q:
+            if not p:
+                i = 0
+            else:
+                i = p.data
+            if not q:
+                j = 0
+            else:
+                j = q.data
+            s = i + j + carry
+            if s >= 10:
+                carry = 1
+                remainder = s % 10
+                sum_llist.append(remainder)
+            else:
+                carry = 0
+                sum_llist.append(s)
+            if p:
+                p = p.next
+            if q:
+                q = q.next
+        sum_llist.print_list()
