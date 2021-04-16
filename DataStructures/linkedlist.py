@@ -314,3 +314,14 @@ class LinkedList:
             return True
         else:
             return True
+
+    def move_tail_to_head(self):
+        if self.head and self.head.next:
+            last = self.head
+            second_to_last = None
+            while last.next:
+                second_to_last = last
+                last = last.next
+            last.next = self.head
+            second_to_last.next = None
+            self.head = last
