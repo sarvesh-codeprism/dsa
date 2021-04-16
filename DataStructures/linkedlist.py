@@ -268,3 +268,49 @@ class LinkedList:
             q.next = self.head
             self.head = p.next
             p.next = None
+
+    def is_palindrome_by_string(self):
+        s = ''
+        p = self.head
+        while p:
+            s += p.data
+            p = p.next
+        return s == s[::-1]
+
+    def is_palindrome_by_stack(self):
+        s = []
+        p = self.head
+        while p:
+            s.append(p.data)
+            p = p.next
+        p = self.head
+        while p:
+            data = s.pop()
+            if data != p.data:
+                return False
+            p = p.next
+        return True
+
+    def is_palindrome_by_two_pointers(self):
+        if self.head:
+            p = self.head
+            q = self.head
+            prev = []
+
+            i = 0
+            while q:
+                prev.append(q)
+                q = q.next
+                i += 1
+            q = prev[i-1]
+
+            count = 1
+
+            while count <= i//2 + 1:
+                if prev[-count].data != p.data:
+                    return False
+                p = p.next
+                count += 1
+            return True
+        else:
+            return True
