@@ -15,9 +15,8 @@ console.log(factorialIterative(8)); // 40320
 function factorialRecursive(num) {
   if (num === 0) {
     return 1;
-  } else {
-    return num * factorialRecursive(num - 1);
   }
+  return num * factorialRecursive(num - 1);
 }
 
 console.log(factorialRecursive(0)); // 1
